@@ -1,0 +1,25 @@
+# 1. 로컬 환경 구축
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: idc_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: idcpassword
+      MYSQL_DATABASE: userdb
+    ports:
+      - "3303:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  nginx:
+    image: nginx:alpine
+    container_name: idc_nginx
+    ports:
+      - "80:80"
+    volumes:
+#      - ./migrationday/nginx.conf.normal:/etc/nginx/nginx.conf
+      - ./migrationday/maintenance.html:/usr/share/nginx/html/maintenance.html
+
+volumes:
+  mysql_data:
