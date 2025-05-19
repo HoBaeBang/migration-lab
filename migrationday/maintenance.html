@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>시스템 점검 중</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        .maintenance-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            animation: loading 2s infinite;
+        }
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="maintenance-box">
+    <h1>🔧 시스템 업그레이드 중입니다 🔧</h1>
+    <p>더 나은 서비스를 위해 시스템을 업그레이드하고 있습니다.</p>
+    <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+    </div>
+    <p id="status">예상 완료 시간: 오전 3시</p>
+    <p>이용에 불편을 드려 죄송합니다.</p>
+</div>
+
+<script>
+    let progress = 0;
+    const updateProgress = () => {
+        progress += Math.random() * 5;
+        if (progress > 100) progress = 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+        document.getElementById('status').textContent = `진행률: ${Math.round(progress)}%`;
+    };
+    setInterval(updateProgress, 2000);
+</script>
+</body>
+</html>
