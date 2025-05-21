@@ -60,7 +60,7 @@ else
 fi
 
 # AWS RDS 연결 확인 (출력 완전히 숨김)
-if mysql -h $RDS_ENDPOINT -P $RDS_PORT -u $RDS_USERNAME -p$RDS_PASSWORD -e "SELECT 1;" >/dev/null 2>&1; then
+if docker exec idc_mysql mysql -h $RDS_ENDPOINT -P $RDS_PORT -u $RDS_USERNAME -p$RDS_PASSWORD -e "SELECT 1;" >/dev/null 2>&1; then
     echo "  ✅ AWS RDS 연결 가능"
 else
     echo "  ❌ AWS RDS 연결 불가 (마이그레이션 전 정상 상태)"
