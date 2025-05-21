@@ -43,19 +43,12 @@
     <div class="progress-bar">
         <div class="progress" id="progressBar"></div>
     </div>
-    <p id="status">예상 완료 시간: 오전 3시</p>
+    <p>예상 완료 시간: 오전 3시</p>
     <p>이용에 불편을 드려 죄송합니다.</p>
 </div>
 
 <script>
-    let progress = 0;
-    const updateProgress = () => {
-        progress += Math.random() * 5;
-        if (progress > 100) progress = 100;
-        document.getElementById('progressBar').style.width = progress + '%';
-        document.getElementById('status').textContent = `진행률: ${Math.round(progress)}%`;
-    };
-    setInterval(updateProgress, 2000);
+    // 고정된 진행 애니메이션만 표시하고 텍스트 업데이트는 제거했습니다
 </script>
 </body>
 </html>
